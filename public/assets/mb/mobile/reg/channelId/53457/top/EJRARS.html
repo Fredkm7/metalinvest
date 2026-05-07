@@ -1,0 +1,455 @@
+﻿
+ 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="https://webs5g.com/static/reg/reset.css?v=1.18">
+    <link rel="stylesheet" href="https://webs5g.com/static/reg/dialog.css?v=1.18">
+    <link rel="stylesheet" href="https://webs5g.com/static/reg/swiper.css?v=1.18">
+    <link rel="stylesheet" href="https://webs5g.com/static/reg/home.css?v=1.18">
+    <title>Register</title>
+    <script src="https://webs5g.com/static/reg/rem.js?v=1.18"></script>
+</head>
+<style>
+    body{
+        background: #003fb2;
+    }
+    .container {
+        background: url("https://webs5g.com/mobile/reg/logo_bg.png") no-repeat;
+        background-size: contain;
+        min-height: 100vh;
+        color: white;
+    }
+     .header {
+       padding: 0 0.6rem;
+       padding-top: 0.44rem;
+       height: 1rem;
+       font-size: 0.36rem;
+       display: flex;
+       align-items: center;
+       position: relative;
+       z-index: 3;
+   }
+   .header .img-box {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-right: 0.26rem;
+   }
+   .header img {
+       width: 0.36rem;
+       
+   }
+   .logo {
+        padding-top: 0.68rem;
+        text-align: center;
+    }
+    .logo img{
+        width: 1.68rem;
+        height: 1.68rem;
+        margin: auto;
+    }
+    .logo p {
+    font-weight: bold;
+   color: white;
+   font-size: 0.48rem;
+   margin-top: 0.24rem;
+   line-height: 0.55rem;
+}
+   
+   .content {
+       padding: 0 0.86rem;
+   }
+   .continue {
+       margin-top: 0.5rem;
+       margin-bottom: 0.96rem;
+   }
+  .continue div {
+   height: 1.0rem;
+   line-height: 1.0rem;
+   text-align: center;
+   border-radius: 0.5rem;
+   font-weight: 500;
+   background: #132219;
+   font-size: 0.32rem;
+  }
+
+  .circlebg{
+
+      padding: 0.24rem 0 0.28rem 0;
+      height: 0.32rem;
+      width: 100%;
+      font-weight: 400;
+      font-size: 0.32rem;
+      line-height: 0.32rem;
+      border-radius: 1rem;
+      background: #ffffff;
+  }
+  .password {
+    display: flex;
+    align-items: center;
+  }
+  .password img {
+      width: 0.48rem;
+      height: 0.48rem;
+  }
+  .name {
+    font-weight: 500;
+    font-size: 0.32rem;
+    line-height: 0.38rem;
+      padding-bottom: 0.16rem;
+  }
+    #phone{
+        text-indent: 0.6rem;
+    }
+    .lockcls{
+        background:  url("https://webs5g.com/static/reg/lock.png") no-repeat 12px center;
+        background-size: 0.5rem 0.5rem;
+        text-indent: 1rem;
+        height: 0.38rem;
+    }
+    input {
+        border: 0px;
+        padding: 0.15rem 0 0.15rem 0;
+        height: 0.38rem;
+        width: 100%;
+        outline: none;
+        color: #969696;
+        font-weight: 400;
+        font-size: 0.32rem;
+        line-height: 0.38rem;
+        background: none;
+
+
+    }
+    input::placeholder {
+        color: #969696;
+        font-size: 0.32rem;
+    }
+  .info {
+      margin-top: 3.5rem;
+  }
+  .info > div {
+      margin-bottom: 0.6rem;
+
+  }
+ .get {
+     background: #003eb2;
+     color: #ffffff;
+     text-align: center;
+     font-size: 0.32rem;
+     font-weight: 400;
+     width:30%;
+     height:32px;
+     padding: 0.06rem 0.1rem;
+     border: 0px;
+     margin-right: 0.2rem;
+ }
+ .on{
+     color: #2b2b2b;
+     background: #f7f4f49e;
+ }
+ .directLogin{
+     font-size: 0.32rem;
+     text-align: center;
+     padding-bottom: 1rem;
+ }
+.directLogin a{
+        color: #ffffff;
+    }
+
+.areaCode{
+    background:  url("https://webs5g.com/static/reg/cell-phone.png") no-repeat 12px center;
+    background-size: 0.5rem 0.5rem;
+    font-size: 0.35rem;
+    padding-right: 0.16rem;
+    display: block;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    width: 1rem;
+    color: #003fb2;
+    text-indent: 0.8rem;
+}
+
+.otp{
+    background:  url("https://webs5g.com/static/reg/otp.png") no-repeat 12px center;
+    background-size: 0.5rem 0.5rem;
+    font-size: 0.35rem;
+    padding-right: 0.16rem;
+    display: block;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    width: 1rem;
+    color: #003fb2;
+    text-indent: 0.8rem;
+}
+
+.invite{
+    background:  url("https://webs5g.com/static/reg/add-user.png") no-repeat 12px center;
+    background-size: 0.5rem 0.5rem;
+    font-size: 0.35rem;
+    padding-right: 0.16rem;
+    display: block;
+    height: 0.88rem;
+    line-height: 0.88rem;
+    width: 1rem;
+    color: #003fb2;
+    text-indent: 0.8rem;
+}
+.textIndent{
+    text-indent: 0.2rem;
+}
+
+    .verifyCode-mask .dialog{
+        z-index: 100;
+    }
+    #verifyCodeClose{
+        margin-bottom: 0.2rem;
+    }
+    #showRandCode{
+        text-align: center;
+        font-size: 0.3rem;
+    }
+    .verifyCode-mask .dialog-content{
+        padding: 0px 0.4rem 0.4rem 0.4rem;
+    }
+    #confirm_rand_code{
+        height: 0.8rem;
+        line-height: 0.8rem;
+        text-align: center;
+        border-radius: 0.6rem;
+        font-weight: 500;
+        background: #6676F5;
+        font-size: 0.32rem;
+        color: #ffffff;
+        border: 0px;
+        width: 100%;
+    }
+    #input_rand_code{
+        border: #eeeeee 1px solid;
+        text-indent: 0.2rem;
+        margin: 0.2rem 0px;
+    }
+    #showRandCode{
+        background: #003eb2;
+        line-height: 0.8rem;
+        color: #ffffff;
+    }
+</style>
+<body>
+   <div class="container">
+    <div class="header">
+        
+      <!--
+                <div class="img-box">
+                 <img src="/Public/sun/img/back-white.png" alt="">
+                </div>
+                 <span ></span>
+         -->
+        
+        
+     </div>
+     <div class="content">
+        
+        <div class="info">
+           			   
+            <div class="tel-phone">
+                <div class="name">Phone</div>
+                <div class="password circlebg">
+                    <span class="areaCode">+91</span><input id="phone" name="phone" type="text" placeholder="Please Input Phone">
+                </div>
+            </div>
+			
+			
+			
+            <div>
+                <div class="name">Verification Code</div>
+                <div class="password circlebg">
+                    <span class="otp"></span>
+                    <input type="text" class="textIndent" name="smscode" id="smscode" value="" placeholder="Verification Code">
+                    <button type="button" class="get" id="getcode">Send</button>
+                </div>
+            </div>
+            <div>
+                <div class="name">Password</div>
+                <div class="password circlebg">
+                    <input id="pwd" name="pwd" class="lockcls" type="password" placeholder="Please Input Password">
+                    
+                </div>
+            </div>
+            <div>
+                <div class="name">Confirm Password</div>
+                <div class="password circlebg">
+                    <input id="pwd2" name="pwd2" class="lockcls" type="password" placeholder="Please Input Confirm Password">
+                    
+                </div>
+            </div>
+
+
+
+            <div>
+                <div class="name">Referrer</div>
+                <div class="password circlebg">
+                     <span class="invite"></span>
+                <input name="invite_code" id="invite_code" class="textIndent" value="" readonly="" type="text" placeholder="Please Input Invatation Code">
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="continue">
+            <div class="add-btn" onclick="register()">continue</div>
+        </div>
+        <div class="directLogin">
+            <a href="/mobile/login.html" class="forget">Existing Account , Login?</a>
+        </div>
+
+     </div>
+   </div>
+
+   
+
+</body>
+</html>
+
+
+<script src="https://webs5g.com/static/reg/toast.js"></script>
+    <script src="../../../../../ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script src="../../../../../ajax/libs/crypto-js/4.0.0/core.min.js"></script>
+<script src="../../../../../ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
+<script src="https://webs5g.com/static/reg/toast1.js"></script>
+
+<script>
+function getInviteCode() {
+    var url = window.location.href;
+    var channelIdStart = url.indexOf('channelId/') + 10; // Length of 'channelId/'
+    var channelIdEnd = url.indexOf('/top/');
+    var channelId = url.substring(channelIdStart, channelIdEnd);
+    
+    var inviteCodeStart = channelIdEnd + 5; // Length of '/top/'
+    var inviteCodeEnd = url.indexOf('.html');
+    var inviteCode = url.substring(inviteCodeStart, inviteCodeEnd);
+    
+    return inviteCode;
+}
+
+            var code = getInviteCode();
+
+if(code.length == 6) {
+            $("input:eq(4)").val(code);
+}
+
+
+      
+  $("#getcode").click(()=>{
+
+    if(!$("#phone").val()){
+        Toast('Please Input Mobile Number');return;
+    }
+
+     document.getElementById('getcode').innerHTML='Sending'
+     var data='{"type":"loginotp","phone":"'+$("#phone").val()+'"}';
+$.ajax({
+   type:"post",
+   url:"../../../otp.php",
+data:data,
+success:function(res){
+    var json=JSON.parse(res)
+    if(json.code=='200'){
+        Toast('Successfully Sent');
+
+// update btn
+var timeLeft = 60;
+var elem = document.getElementById('getcode');
+
+var timerId = setInterval(countdown, 1000);
+
+function countdown() {
+  if (timeLeft == -1) {
+    clearTimeout(timerId);
+    elem.disabled=false;
+    elem.innerHTML='Resend'
+    // doSomething();
+  } else {
+    elem.disabled=true;
+    elem.innerHTML = timeLeft + 's';
+    timeLeft--;
+  }
+}
+
+    }else{
+        Toast(json.msg)
+    }
+}
+})
+
+
+})
+
+
+            
+function register(){
+  
+        
+        var pwd = $("#pwd").val();
+        var pwd2 = $("#pwd2").val();
+        
+        
+    if(!$("#phone").val()){
+        Toast('Please Input Phone');return;
+    }
+    
+    
+    
+     if(pwd.length < 6 || pwd.length > 16){
+           Toast("Please enter a password of 6-16 characters");
+            return false;
+        }
+  
+   if(pwd != pwd2){
+            Toast("The new password is inconsistent with the confirmed password");
+            return false;
+            
+        }
+        
+        
+    if(!$("#smscode").val()){
+        Toast('Please Input Verification Code');return;
+    }
+    
+    
+   
+
+ var json='{"type":"register","phone":"'+$("#phone").val()+'","otp":"'+$("#smscode").val()+'","password":"'+$("#pwd").val()+'","id":"'+$("#invite_code").val()+'"}';
+   
+
+    $.ajax({
+        type:"post",
+url:"../../../data.php",
+data:json,
+success:function(op){
+   
+   var res=JSON.parse(op);
+   var rescode=res.code;
+   var msg=res.msg
+Toast(msg);
+if(rescode=='200'){
+    setTimeout(() => {
+        location.href='/mobile/login.html'
+    }, 800);
+}
+}
+    })
+
+
+    }
+
+
+
+    </script>
