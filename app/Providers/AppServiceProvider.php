@@ -31,46 +31,49 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        try {
+            $activeTemplate = activeTemplate();
+            $general        = gs();
 
-        $activeTemplate = activeTemplate();
-        $general        = gs();
+            $viewShare['general']            = $general;
+            $viewShare['activeTemplate']     = $activeTemplate;
+            $viewShare['activeTemplateTrue'] = activeTemplate(true);
+            $viewShare['language']           = Language::all();
+            $viewShare['emptyMessage']       = 'Data not found';
+            view()->share($viewShare);
 
-        $viewShare['general']            = $general;
-        $viewShare['activeTemplate']     = $activeTemplate;
-        $viewShare['activeTemplateTrue'] = activeTemplate(true);
-        $viewShare['language']           = Language::all();
-        $viewShare['emptyMessage']       = 'Data not found';
-        view()->share($viewShare);
+            view()->composer('admin.partials.sidenav', function ($view) {
+                $view->with([
+                    'bannedUsersCount'           => User::banned()->count(),
+                    'emailUnverifiedUsersCount'  => User::emailUnverified()->count(),
+                    'mobileUnverifiedUsersCount' => User::mobileUnverified()->count(),
+                    'kycUnverifiedUsersCount'    => User::kycUnverified()->count(),
+                    'kycPendingUsersCount'       => User::kycPending()->count(),
+                    'pendingTicketCount'         => SupportTicket::whereIN('status', [0, 2])->count(),
+                    'pendingDepositsCount'       => Deposit::pending()->count(),
+                    'pendingWithdrawCount'       => Withdrawal::pending()->count(),
+                ]);
+            });
 
-        view()->composer('admin.partials.sidenav', function ($view) {
-            $view->with([
-                'bannedUsersCount'           => User::banned()->count(),
-                'emailUnverifiedUsersCount'  => User::emailUnverified()->count(),
-                'mobileUnverifiedUsersCount' => User::mobileUnverified()->count(),
-                'kycUnverifiedUsersCount'    => User::kycUnverified()->count(),
-                'kycPendingUsersCount'       => User::kycPending()->count(),
-                'pendingTicketCount'         => SupportTicket::whereIN('status', [0, 2])->count(),
-                'pendingDepositsCount'       => Deposit::pending()->count(),
-                'pendingWithdrawCount'       => Withdrawal::pending()->count(),
-            ]);
-        });
+            view()->composer('admin.partials.topnav', function ($view) {
+                $view->with([
+                    'adminNotifications'     => AdminNotification::where('is_read', 0)->with('user')->orderBy('id', 'desc')->take(10)->get(),
+                    'adminNotificationCount' => AdminNotification::where('is_read', 0)->count(),
+                ]);
+            });
 
-        view()->composer('admin.partials.topnav', function ($view) {
-            $view->with([
-                'adminNotifications'     => AdminNotification::where('is_read', 0)->with('user')->orderBy('id', 'desc')->take(10)->get(),
-                'adminNotificationCount' => AdminNotification::where('is_read', 0)->count(),
-            ]);
-        });
+            view()->composer('partials.seo', function ($view) {
+                $seo = Frontend::where('data_keys', 'seo.data')->first();
+                $view->with([
+                    'seo' => $seo ? $seo->data_values : $seo,
+                ]);
+            });
 
-        view()->composer('partials.seo', function ($view) {
-            $seo = Frontend::where('data_keys', 'seo.data')->first();
-            $view->with([
-                'seo' => $seo ? $seo->data_values : $seo,
-            ]);
-        });
-
-        if ($general->force_ssl) {
-            \URL::forceScheme('https');
+            if ($general && $general->force_ssl) {
+                \URL::forceScheme('https');
+            }
+        } catch (\Exception $e) {
+            // DB not yet available (e.g., during initial migrations)
         }
 
         Paginator::useBootstrapFour();
